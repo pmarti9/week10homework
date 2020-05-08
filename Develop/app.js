@@ -11,7 +11,13 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 
-// Write code to use inquirer to gather information about the development team members,
+// Write code to use inquirer to gather information about the development team members,;
+    //ask for email, id.
+    //intern will ask for school
+    //enginerr will provide github username
+    //manager will provide office number
+
+
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 // After the user has input all employees desired, call the `render` function (required
@@ -33,3 +39,43 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+inquirer.prompt([
+    {
+        type: "list",
+        name: "role",
+        message: "What is this employee's Role?",
+        choices: [
+            "Manager",
+            "Employee",
+            "Engineer",
+            "Intern",]
+    },
+    {
+    type: "input",
+    name: "name",
+    message: "What is their name?"
+  },
+  {
+    type: "input",
+    name: "id",
+    message: "What is their ID?"
+  },
+  {
+    type: "input",
+    name: "email",
+    message: "What is their email address?"
+  },
+  {
+      type: "confirm",
+      name: "askAgain?",
+      message: "Do you want to add another employee?"
+  },
+]);
+
+async function writeToFile(filename, data){
+    const data = await inquirer.prompt(questions);
+    writeToFile("team.html", await app.js(data));
+    return fs.writeFileSync(filename, data);
+};
+writeToFile();
+render();
