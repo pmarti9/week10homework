@@ -50,6 +50,26 @@ inquirer.prompt([
             "Engineer",
             "Intern",]
     },
+
+    function Manager(){
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "name",
+                message: "What is their name?",
+            },
+            {
+                type: "input",
+                name: "id",
+                message: "What is their ID?"
+              },
+              {
+                type: "input",
+                name: "officeNumber",
+                message: "What is their officeNumber?"
+              },
+        ])
+    },
     {
     type: "input",
     name: "name",
@@ -71,6 +91,8 @@ inquirer.prompt([
       message: "Do you want to add another employee?"
   },
 ]);
+const employee = new Employee({name, id, email});
+
 
 async function writeToFile(filename, data){
     const data = await inquirer.prompt(questions);
