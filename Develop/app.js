@@ -10,7 +10,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 let employees = [];
-let team = '';
 // Write code to use inquirer to gather information about the development team members,;
 //ask for email, id.
 //intern will ask for school
@@ -206,7 +205,7 @@ inquirer.prompt([
 });
 
 
-function buildTeam() {
+function buildTeam(team) {
   let team = employees;
   fs.writeFileSync(outputPath, render(), (err) =>{
     if(err) throw err;
